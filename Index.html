@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gold Edge AI</title>
+<style>
+body{margin:0;padding:18px;background:#0b1020;color:#edf2fb;font-family:Arial;max-width:900px;margin:auto}
+h1{color:#f2c14e} .card{background:#141c30;border:1px solid #29344d;border-radius:14px;padding:16px;margin:12px 0}
+.label{color:#9aa8bf;font-size:13px}.price{font-size:32px;color:#f2c14e;font-weight:bold}
+input{width:95%;padding:12px;margin:7px 0 14px;background:#0b1426;color:white;border:1px solid #29344d;border-radius:8px;font-size:16px}
+button{background:#f2c14e;border:0;border-radius:8px;padding:13px;width:100%;font-weight:bold}
+table{width:100%;margin-top:12px}td{padding:10px;border-bottom:1px solid #29344d}
+.wait{color:#f2c14e}.note{color:#9aa8bf;font-size:12px;line-height:1.5}
+</style>
+</head>
+<body>
+<h1>✦ GOLD EDGE AI</h1>
+<p class="label">PERSONAL XAU/USD TRADING TERMINAL</p>
+<div class="card">
+<p class="label">XAU/USD SAMPLE PRICE</p>
+<div class="price">$3,550.00</div>
+<p class="note">DEMO DATA — NOT LIVE</p>
+</div>
+<div class="card">
+<p class="label">MARKET STATUS</p>
+<h2 class="wait">WAIT</h2>
+<p class="note">No live market data connected. Do not trade using demo values.</p>
+</div>
+<div class="card">
+<h3>TECHNICAL INDICATORS</h3>
+<table>
+<tr><td>EMA 20</td><td>3,552.00</td></tr>
+<tr><td>EMA 50</td><td>3,548.00</td></tr>
+<tr><td>RSI 14</td><td>51.0</td></tr>
+</table>
+<p class="note">Illustrative placeholders, not calculated market indicators.</p>
+</div>
+<div class="card">
+<h3>RISK CALCULATOR</h3>
+<label>Account balance (£)</label>
+<input id="balance" type="number" value="100">
+<label>Risk percentage (%)</label>
+<input id="risk" type="number" value="0.5">
+<label>Entry price</label>
+<input id="entry" type="number" value="3550">
+<label>Stop-loss price</label>
+<input id="stop" type="number" value="3545">
+<button onclick="calculate()">CALCULATE RISK</button>
+<table>
+<tr><td>Maximum loss</td><td id="loss">£0.50</td></tr>
+<tr><td>Price distance</td><td id="distance">$5.00</td></tr>
+<tr><td>Lot size</td><td>Requires broker specifications</td></tr>
+</table>
+</div>
+<div class="card">
+<h3>TRADING CHECKLIST</h3>
+<table>
+<tr><td>Live data</td><td>Not connected</td></tr>
+<tr><td>Candle confirmation</td><td>Unavailable</td></tr>
+<tr><td>News analysis</td><td>Not connected</td></tr>
+<tr><td>Automatic trading</td><td>Disabled</td></tr>
+</table>
+</div>
+<p class="note">Educational tool only. Demo prices are fictional. No guaranteed profits or live signals.</p>
+<script>
+function calculate(){
+let b=Number(document.getElementById('balance').value);
+let r=Number(document.getElementById('risk').value);
+let e=Number(document.getElementById('entry').value);
+let s=Number(document.getElementById('stop').value);
+if(b<=0||r<=0||r>2||e<=0||s<=0||e===s){
+document.getElementById('loss').textContent='Check inputs';
+document.getElementById('distance').textContent='—';
+return;
+}
+document.getElementById('loss').textContent='£'+(b*r/100).toFixed(2);
+document.getElementById('distance').textContent='$'+Math.abs(e-s).toFixed(2);
+}
+calculate();
+</script>
+</body>
+</html>
